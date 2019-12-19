@@ -8,6 +8,7 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.netflix.hystrix.EnableHystrix;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
+import tk.mybatis.spring.annotation.MapperScan;
 
 /**
  *
@@ -30,6 +31,7 @@ import org.springframework.web.client.RestTemplate;
 @EnableDiscoveryClient
 //使用断路器
 @EnableHystrix
+@MapperScan("com.zhou.serviceribbon.mapper")
 public class ServiceRibbonApplication {
 
     public static void main(String[] args) {

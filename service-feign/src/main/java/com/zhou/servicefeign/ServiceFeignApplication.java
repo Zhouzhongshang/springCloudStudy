@@ -1,5 +1,6 @@
 package com.zhou.servicefeign;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
@@ -24,6 +25,8 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @EnableEurekaClient
 @EnableDiscoveryClient
 @EnableFeignClients //开启feign的功能
+
+@MapperScan("com.zhou.servicefeign.dao")
 public class ServiceFeignApplication {
 
     public static void main(String[] args) {
