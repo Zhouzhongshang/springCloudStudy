@@ -30,9 +30,11 @@ import java.util.stream.Collectors;
             studentList.add(new Student("2", "小明", "打飞机"));
             studentList.add(new Student("1.1", "李四", "李四的爱好"));
             studentList.add(new Student("1.1.1", "小红", "看书"));
+            studentList.add(new Student("1.12.1", "小红", "看书"));
             studentList.add(new Student("1.2", "小黑", "开黑"));
             studentList.add(new Student("3","3的名字","3的爱好"));
             studentList.add(new Student("3.1","3.1的名字","3.1的爱好"));
+            studentList.add(new Student("3.21.1","3.1的名字","3.1的爱好"));
             studentList.add(new Student("1.2.1", "小王", "游泳"));
             studentList.add(new Student("2.1", "小钱", "钱钱钱"));
             studentList.add(new Student("2.1.1", "小孙", "孙孙孙"));
@@ -73,11 +75,11 @@ import java.util.stream.Collectors;
             }
             List<Student> all = new ArrayList<>(studentList);
             int finalLevel = level;
-            List<Student> studentListTemp = studentList.stream().filter(student -> student.id.length() == finalLevel).sorted(Comparator.comparingInt(o -> Integer.parseInt(o.getId().replace(".", "")))).collect(Collectors.toList());
+            List<Student> studentListTemp = studentList.stream().filter(student -> student.id.split("\\.").length == finalLevel).sorted(Comparator.comparingInt(o -> Integer.parseInt(o.getId().split("\\.")[finalLevel-1]))).collect(Collectors.toList());
             if (StringUtils.isNotBlank(parentId)) {
                 studentListTemp = studentListTemp.stream().filter(student -> student.getId().startsWith(parentId)).collect(Collectors.toList());
             }
-            level = level + 2;
+            level = level + 1;
             for (Student student : studentListTemp) {
                 DataVo dataVo = new DataVo(student);
                 List<DataVo> nextList = new ArrayList<>();
