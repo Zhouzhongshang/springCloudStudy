@@ -19,6 +19,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
  * 2Feign 整合了ribbon，具有负载均衡的能力
  * 3整合了Hystrix，具有熔断的能力:
  *          避免了某个服务提供者挂掉导致服务不能用，阻塞。
+ * @author 86157
  */
 
 @SpringBootApplication
