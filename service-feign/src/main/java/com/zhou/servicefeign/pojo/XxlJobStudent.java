@@ -2,11 +2,13 @@ package com.zhou.servicefeign.pojo;
 
 import lombok.Data;
 
+import java.util.function.Supplier;
+
 /**
  * @author 86157
  */
 @Data
-public class XxlJobStudent {
+public class XxlJobStudent implements Supplier<XxlJobStudent> {
 
     private int id;
 
@@ -15,4 +17,24 @@ public class XxlJobStudent {
     private int age;
 
     private String hobby;
+
+    public XxlJobStudent() {
+    }
+
+    public XxlJobStudent(int id, String name, int age, String hobby) {
+        this.id = id;
+        this.name = name;
+        this.age = age;
+        this.hobby = hobby;
+    }
+
+    /**
+     * Gets a result.
+     *
+     * @return a result
+     */
+    @Override
+    public XxlJobStudent get() {
+        return null;
+    }
 }
