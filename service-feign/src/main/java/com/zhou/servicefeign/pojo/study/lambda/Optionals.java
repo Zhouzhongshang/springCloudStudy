@@ -19,6 +19,7 @@ public class Optionals {
     }
 
     private static Integer getScore(XxlJobStudent xxlJobStudent) {
-        return Optional.ofNullable(xxlJobStudent).map(XxlJobStudent::getId).orElse(null);
+        Integer integer = Optional.ofNullable(xxlJobStudent).map(XxlJobStudent::getId).orElse(0);
+        return integer;
     }
 }

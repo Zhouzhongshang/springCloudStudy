@@ -34,7 +34,11 @@ public class Lambda {
         //遍历
         select();
 
-        //分组
+        //对list遍历处理返回另一个list
+        //重点：map不进行类型转化，如果原来流中是基本类型，map映射完应当还是基本类型，如果原来是包装类型，映射完应当还是包装类型。
+       /* IntStream.range(0, lists.size())
+                .mapToObj(i -> handle(lists.get(i), i))
+                .collect(Collectors.toList());*/
 
 
         //
