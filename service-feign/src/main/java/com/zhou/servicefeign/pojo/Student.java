@@ -18,6 +18,10 @@ import java.util.stream.Collectors;
         private String name;
         private String hobby;
 
+
+        public Student() {
+        }
+
         public Student(String id, String name, String hobby) {
             this.id = id;
             this.name = name;

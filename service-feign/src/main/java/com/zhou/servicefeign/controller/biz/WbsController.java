@@ -36,6 +36,7 @@ public class WbsController {
         System.out.println(b);
     }
 
+
     /**
      * 批量添加数据 Map接受
      */

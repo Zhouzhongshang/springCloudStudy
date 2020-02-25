@@ -1,3 +1,4 @@
+/*
 package com.zhou.servicefeign.config;
 
 import com.xxl.job.core.executor.impl.XxlJobSpringExecutor;
@@ -7,9 +8,11 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-    /**
+    */
+/**
      * @author 86157
-     */
+     *//*
+
     @Configuration
     public class XxlJobConfig {
         private Logger logger = LoggerFactory.getLogger(XxlJobConfig.class);
@@ -51,7 +54,8 @@ import org.springframework.context.annotation.Configuration;
             return xxlJobSpringExecutor;
         }
 
-        /**
+        */
+/**
          * 针对多网卡、容器内部署等情况，可借助 "spring-cloud-commons" 提供的 "InetUtils" 组件灵活定制注册IP；
          *
          *      1、引入依赖：
@@ -66,8 +70,10 @@ import org.springframework.context.annotation.Configuration;
          *
          *      3、获取IP
          *          String ip_ = inetUtils.findFirstNonLoopbackHostInfo().getIpAddress();
-         */
+         *//*
+
 
 
     }
 
+*/
