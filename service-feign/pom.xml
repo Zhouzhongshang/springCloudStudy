@@ -20,6 +20,12 @@
 
     <dependencies>
 
+        <dependency>
+            <groupId>com.github.liaochong</groupId>
+            <artifactId>myexcel</artifactId>
+            <version>3.4.2</version>
+        </dependency>
+
         <!--xxl核心包 2.1.2版本支持@XxlJob注解-->
         <dependency>
             <groupId>com.xuxueli</groupId>
