@@ -17,19 +17,19 @@ public class ArtCrowdVo {
         /**
          * 国家英文
          */
-        @ExcelColumn(index = 0)
+        @ExcelColumn(index = 0,title = "数据名称")
         public String dataName;
 
         /**
          * 国家中文
          */
-        @ExcelColumn(index = 1)
+        @ExcelColumn(index = 1,title = "备注")
         public String ext1;
 
         /**
          * 国家所属区域
          */
-        @ExcelColumn(index = 2)
+        @ExcelColumn(index = 2,title = "所属区域")
         public String areas;
 
 
