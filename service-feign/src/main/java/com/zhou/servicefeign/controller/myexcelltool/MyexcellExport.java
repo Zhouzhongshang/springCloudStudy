@@ -4,9 +4,7 @@ import com.github.liaochong.myexcel.core.DefaultExcelBuilder;
 import com.github.liaochong.myexcel.utils.AttachmentExportUtil;
 import com.zhou.servicefeign.pojo.ArtCrowdVo;
 import org.apache.poi.ss.usermodel.Workbook;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
@@ -21,9 +19,10 @@ import java.util.List;
 @RestController
 @RequestMapping("export")
 public class MyexcellExport {
-    @GetMapping("/default/excel/example")
-    public void defaultBuild(HttpServletResponse response) throws Exception {
-        List<ArtCrowdVo> dataList = this.getDataList();
+
+    @PostMapping("excel")
+    public void defaultBuild(HttpServletResponse response, @RequestBody List<ArtCrowdVo> dataList) throws Exception {
+      //  List<ArtCrowdVo> dataList = this.getDataList();
         Workbook workbook = DefaultExcelBuilder.of(ArtCrowdVo.class)
                 .build(dataList);
         AttachmentExportUtil.export(workbook, "艺术生信息", response);
