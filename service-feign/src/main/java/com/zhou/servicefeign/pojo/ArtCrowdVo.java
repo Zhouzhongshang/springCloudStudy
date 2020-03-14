@@ -10,6 +10,7 @@ import lombok.Data;
  * @create: 2020-03-06 15:50
  *
  * 注意：导入导出的注解不同
+ *   index:导入时使用
  **/
 @Data
 public class ArtCrowdVo {

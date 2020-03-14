@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * @program: sc-f-chapter1
  * @description: 做excel导入操作
- * @author: zzs
+ * @author: zzs 支持两种格式
  * @create: 2020-03-11 19:56
  **/
 @RestController
@@ -28,7 +28,7 @@ public class MyexcellImport {
         }
        //InputStream inputStream = file.getInputStream();
         // 方式一：全部读取后处理，SAX模式，避免OOM，建议大量数据使用
-        List<ArtCrowdVo> result = SaxExcelReader.of(ArtCrowdVo.class).sheet(0).read(file.getInputStream());
+        List<ArtCrowdVo> result = SaxExcelReader.of(ArtCrowdVo.class).sheet(0).rowFilter(i -> i.getRowNum()>1 ).read(file.getInputStream());
                // .sheet(0) // 0代表第一个，如果为0，可省略该操作，也可sheet("名称")读取，.csv文件无效
              //   .rowFilter(row -> row.getRowNum() > 0) // 如无需过滤，可省略该操作，0代表第一行
               //  .charset("GBK") // 目前仅.csv文件有效，设置当前文件的编码
