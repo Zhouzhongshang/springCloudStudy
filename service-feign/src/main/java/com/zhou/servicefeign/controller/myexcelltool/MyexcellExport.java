@@ -22,6 +22,7 @@ public class MyexcellExport {
 
     /**
      * 附件导出
+     *
      * @param response
      * @param
      * @throws Exception
@@ -30,26 +31,25 @@ public class MyexcellExport {
     public void defaultBuild(HttpServletResponse response) throws Exception {
         Workbook workbook = DefaultExcelBuilder.of(ArtCrowdExportVo.class)
                 .build(getDataList());
-      AttachmentExportUtil.export(workbook, "国家信息", response);
+        AttachmentExportUtil.export(workbook, "国家信息", response);
     }
 
     /**
      * @Description: 如果为空的数据，则是模板。如果有数据则为导出
-     * @Param: 
-     * @return: 
+     * @Param:
+     * @return:
      * @Author: 86157
      * @Date: 2020/3/11
-     * @Implementation: 
-     *
+     * @Implementation:
      */
     private List<ArtCrowdExportVo> getDataList() {
         ArrayList<ArtCrowdExportVo> objects = new ArrayList<>();
-     // objects.add(new ArtCrowdVo());
-        for (int i = 0 ; i< 10 ; i++){
+        // objects.add(new ArtCrowdVo());
+        for (int i = 0; i < 10; i++) {
             ArtCrowdExportVo artCrowdVo = new ArtCrowdExportVo();
-            artCrowdVo.setDataName("数据名称"+i);
-            artCrowdVo.setExt1("备注"+i);
-            artCrowdVo.setAreas("海外区域"+i);
+            artCrowdVo.setDataName("数据名称" + i);
+            artCrowdVo.setExt1("备注" + i);
+            artCrowdVo.setAreas("海外区域" + i);
             objects.add(artCrowdVo);
         }
         return objects;

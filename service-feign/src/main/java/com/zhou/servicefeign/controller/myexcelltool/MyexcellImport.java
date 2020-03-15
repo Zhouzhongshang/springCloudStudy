@@ -26,13 +26,13 @@ public class MyexcellImport {
         if (file.isEmpty()) {
             return null;
         }
-       //InputStream inputStream = file.getInputStream();
+        //InputStream inputStream = file.getInputStream();
         // 方式一：全部读取后处理，SAX模式，避免OOM，建议大量数据使用
-        List<ArtCrowdVo> result = SaxExcelReader.of(ArtCrowdVo.class).sheet(0).rowFilter(i -> i.getRowNum()>1 ).read(file.getInputStream());
-               // .sheet(0) // 0代表第一个，如果为0，可省略该操作，也可sheet("名称")读取，.csv文件无效
-             //   .rowFilter(row -> row.getRowNum() > 0) // 如无需过滤，可省略该操作，0代表第一行
-              //  .charset("GBK") // 目前仅.csv文件有效，设置当前文件的编码
-       //         .read(inputStream);// 可接收inputStream
+        List<ArtCrowdVo> result = SaxExcelReader.of(ArtCrowdVo.class).sheet(0).rowFilter(i -> i.getRowNum() > 1).read(file.getInputStream());
+        // .sheet(0) // 0代表第一个，如果为0，可省略该操作，也可sheet("名称")读取，.csv文件无效
+        //   .rowFilter(row -> row.getRowNum() > 0) // 如无需过滤，可省略该操作，0代表第一行
+        //  .charset("GBK") // 目前仅.csv文件有效，设置当前文件的编码
+        //         .read(inputStream);// 可接收inputStream
         return result;
     }
 }

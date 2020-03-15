@@ -21,7 +21,7 @@ public class MyexcellController {
     public static void main(String[] args) {
         File file = new File("C:\\Users\\86157\\Desktop\\Country Region.xlsx");
         // （推荐）方式一：全部读取后处理，SAX模式，避免OOM，建议大量数据使用
-        List<ArtCrowdVo> result = SaxExcelReader.of(ArtCrowdVo.class).sheets("1","2").read(file);
+        List<ArtCrowdVo> result = SaxExcelReader.of(ArtCrowdVo.class).sheets("1", "2").read(file);
 
         /**
          * 实现思路：先建立好关系再一次性全部入库
@@ -32,25 +32,25 @@ public class MyexcellController {
          *   dictName=“海外国家”
          */
         List<ArtCrowdVo> parentList = result.stream().filter(i -> i.getExt1() == null).distinct().collect(Collectors.toList());
-        List<ArtCrowdVo> parentResult=new ArrayList<>();
+        List<ArtCrowdVo> parentResult = new ArrayList<>();
         HashMap<String, ArtCrowdVo> artCrowdVoHashMap = new HashMap<>(400);
         int dataValue = 330;
-        for (ArtCrowdVo artCrowdVo : parentList){
-            ArtCrowdVo parentArtCrowdVo = new ArtCrowdVo(artCrowdVo.getDataName(),artCrowdVo.getDataName(),"0",String.valueOf(dataValue),"0","海外区域");
-            dataValue+=10;
+        for (ArtCrowdVo artCrowdVo : parentList) {
+            ArtCrowdVo parentArtCrowdVo = new ArtCrowdVo(artCrowdVo.getDataName(), artCrowdVo.getDataName(), "0", String.valueOf(dataValue), "0", "海外区域");
+            dataValue += 10;
             parentResult.add(parentArtCrowdVo);
-            artCrowdVoHashMap.put(parentArtCrowdVo.getDataName(),parentArtCrowdVo);
+            artCrowdVoHashMap.put(parentArtCrowdVo.getDataName(), parentArtCrowdVo);
         }
 
         //剩下的为子元素数据
         result.removeAll(parentList);
 
-        List<ArtCrowdVo> childResult=new ArrayList<>();
-        for (ArtCrowdVo artCrowdVo : result){
+        List<ArtCrowdVo> childResult = new ArrayList<>();
+        for (ArtCrowdVo artCrowdVo : result) {
             String dataValue1 = artCrowdVoHashMap.get(artCrowdVo.getAreas()).getDataValue();
             ArtCrowdVo childArtCrowdVo = new ArtCrowdVo(artCrowdVo.getDataName(), artCrowdVo.getExt1(), artCrowdVo.getAreas(), String.valueOf(dataValue), dataValue1, "国外国家");
             childResult.add(childArtCrowdVo);
-            dataValue+=10;
+            dataValue += 10;
         }
 
         parentResult.addAll(childResult);
