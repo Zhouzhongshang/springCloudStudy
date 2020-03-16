@@ -28,6 +28,22 @@ public class XxlJobStudent implements Supplier<XxlJobStudent> {
         this.hobby = hobby;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public String getHobby() {
+        return hobby;
+    }
+
     /**
      * Gets a result.
      *
