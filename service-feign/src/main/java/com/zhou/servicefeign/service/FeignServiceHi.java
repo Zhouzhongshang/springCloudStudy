@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.RequestParam;
  *      同理可以改造成post 和面向对象的传输
  * 2,断路器的用法
  * 3，可以负载均衡
+ *
+ *
+ * 指定服务名、接口名、定义断路实现类来实现断路器的功能
  */
 @FeignClient(value = "service-hi",fallback = FeignServiceHiHystrix.class )
 public interface FeignServiceHi {

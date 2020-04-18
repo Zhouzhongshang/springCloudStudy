@@ -50,6 +50,7 @@
     <orderEntry type="library" scope="RUNTIME" name="Maven: com.google.code.gson:gson:2.8.5" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.apache.commons:commons-math:2.2" level="project" />
     <orderEntry type="library" name="Maven: com.netflix.archaius:archaius-core:0.7.6" level="project" />
+    <orderEntry type="library" name="Maven: com.google.guava:guava:16.0" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: javax.ws.rs:jsr311-api:1.1.1" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: com.netflix.servo:servo-core:0.12.21" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: com.sun.jersey:jersey-core:1.19.1" level="project" />
@@ -59,6 +60,8 @@
     <orderEntry type="library" name="Maven: org.apache.httpcomponents:httpcore:4.4.9" level="project" />
     <orderEntry type="library" name="Maven: commons-codec:commons-codec:1.11" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: com.google.inject:guice:4.1.0" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: javax.inject:javax.inject:1" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: aopalliance:aopalliance:1.0" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: com.github.vlsi.compactmap:compactmap:1.2.1" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: com.github.andrewoma.dexx:dexx-collections:0.2" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.9.0" level="project" />
@@ -169,15 +172,5 @@
     <orderEntry type="library" scope="TEST" name="Maven: com.vaadin.external.google:android-json:0.0.20131108.vaadin1" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.springframework:spring-test:5.0.7.RELEASE" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.xmlunit:xmlunit-core:2.5.1" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.testng:testng:7.1.0" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: com.beust:jcommander:1.72" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: com.google.inject:guice:no_aop:4.1.0" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: javax.inject:javax.inject:1" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: aopalliance:aopalliance:1.0" level="project" />
-    <orderEntry type="library" name="Maven: com.google.guava:guava:19.0" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.junit.jupiter:junit-jupiter-api:5.1.1" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.apiguardian:apiguardian-api:1.0.0" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.opentest4j:opentest4j:1.0.0" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.junit.platform:junit-platform-commons:1.1.1" level="project" />
   </component>
 </module>

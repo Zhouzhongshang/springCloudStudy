@@ -22,6 +22,10 @@ public class TestHttpClientDemo {
     @PostMapping("getStudent")
     public List<Student> getStudent( @RequestBody Student studentBo){
 
+        TestMultithreading testMultithreading = new TestMultithreading();
+        //开启一个线程去做其他事情 主线程继续会执行任务。
+        new Thread(testMultithreading).start();
+
         List<Student> students=new ArrayList<>(3);
         for (int i = 0; i <3 ; i++) {
             Student student = new Student();

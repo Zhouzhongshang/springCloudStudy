@@ -3,12 +3,18 @@ package com.zhou.servicefeign.controller.myexcelltool;
 import com.github.liaochong.myexcel.core.DefaultExcelBuilder;
 import com.github.liaochong.myexcel.utils.AttachmentExportUtil;
 import com.zhou.servicefeign.pojo.ArtCrowdExportVo;
+import org.apache.poi.hssf.usermodel.*;
+import org.apache.poi.ss.usermodel.Font;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
-import java.util.ArrayList;
-import java.util.List;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 /**
  * @program: sc-f-chapter1
@@ -29,9 +35,112 @@ public class MyexcellExport {
      */
     @GetMapping("excel")
     public void defaultBuild(HttpServletResponse response) throws Exception {
-        Workbook workbook = DefaultExcelBuilder.of(ArtCrowdExportVo.class)
+        response.setContentType("application/vnd.ms-excel;charset=utf-8");
+        PrintWriter writer = response.getWriter();
+        writer.println("周中山");
+
+      /* String titles [] = {"岗位","服务场次","服务时长"};
+        HSSFWorkbook wb;
+        OutputStream output = null;
+        try {
+        wb = new HSSFWorkbook();
+        //创建sheet
+            String fileName =  "zzs";
+        HSSFSheet sh = wb.createSheet(fileName);
+
+        Date date = new Date();
+
+
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        fileName += "_" + df.format(date) + ".xls";
+
+        HSSFCellStyle style_title = wb.createCellStyle();
+        Font titleFont = wb.createFont();
+        titleFont.setItalic(true);
+        titleFont.setColor(Font.COLOR_NORMAL);
+        titleFont.setFontHeightInPoints((short) 12);
+        titleFont.setFontName("仿宋");
+        titleFont.setUnderline(Font.U_NONE);
+        style_title.setFont(titleFont);
+
+        HSSFCellStyle style_common = wb.createCellStyle();
+        Font common_font = wb.createFont();
+        common_font.setColor(Font.COLOR_NORMAL);
+        common_font.setFontHeightInPoints((short) 10);
+        common_font.setFontName("微软雅黑");
+        style_common.setFont(common_font);
+
+
+            // 设置列宽
+            for (int i = 0; i < titles.length - 1; i++) {
+                sh.setColumnWidth(i, 256 * 15 + 184);
+            }
+
+            HSSFRow row = sh.createRow(0);
+            HSSFCell cell = null;
+
+            // 第1行
+            HSSFRow row3 = sh.createRow(0);
+
+            // 第1行的列
+            for (int i = 0; i < titles.length; i++) {
+                cell = row3.createCell(i);
+                cell.setCellValue(new HSSFRichTextString(titles[i]));
+                cell.setCellStyle(style_title);
+                sh.autoSizeColumn(i, true);
+            }
+
+            List<Map<String, Object>> result = new ArrayList<>();
+
+            for (int i = 0; i < 3; i++) {
+                Map<String, Object> tempMap = new HashMap<>();
+                tempMap.put("岗位", "岗位1");
+                tempMap.put("服务场次", "岗位2");
+                tempMap.put("服务时长", "岗位3");
+                result.add(tempMap);
+            }
+
+            //填充数据的内容
+            int i = 1, z = 0;
+            while (z < result.size()) {
+                row = sh.createRow(i);
+                Map<String, Object> map = result.get(z);
+                for (int j = 0; j < titles.length; j++) {
+                    cell = row.createCell(j);
+                    if (map.get(titles[j]) != null) {
+                        cell.setCellValue(map.get(titles[j]).toString());
+                        cell.setCellStyle(style_common);
+                        sh.autoSizeColumn(j, true);
+                    } else {
+                        cell.setCellValue("");
+                        cell.setCellStyle(style_common);
+                        sh.autoSizeColumn(j, true);
+                    }
+                }
+                i++;
+                z++;
+            }
+
+
+            output = response.getOutputStream();
+            response.reset();
+            response.setCharacterEncoding("UTF-8");
+            // 设置contentType为excel格式
+            response.setContentType("application/vnd.ms-excel;charset=utf-8");
+            response.setHeader("Content-Disposition", "Attachment;Filename=" + new String(fileName.getBytes(), "iso-8859-1"));
+            wb.write(output);
+            output.flush();
+            output.close();
+
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }*/
+        /*Workbook workbook = DefaultExcelBuilder.of(ArtCrowdExportVo.class)
                 .build(getDataList());
-        AttachmentExportUtil.export(workbook, "国家信息", response);
+        AttachmentExportUtil.export(workbook, "国家信息", response);*/
     }
 
     /**
