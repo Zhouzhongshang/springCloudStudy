@@ -8,5 +8,6 @@ import org.springframework.stereotype.Repository;
 /**
  * @author 86157
  */
+@Repository
 public interface WbsDao extends BaseMapper<WbsDto> {
 }
