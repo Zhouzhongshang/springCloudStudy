@@ -26,7 +26,6 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @EnableEurekaClient
 @EnableDiscoveryClient
 @EnableFeignClients //开启feign的功能
-
 @MapperScan("com.zhou.servicefeign.dao")
 public class ServiceFeignApplication {
 
