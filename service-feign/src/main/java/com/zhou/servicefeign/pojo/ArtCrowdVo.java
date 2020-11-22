@@ -3,6 +3,8 @@ package com.zhou.servicefeign.pojo;
 import com.github.liaochong.myexcel.core.annotation.ExcelColumn;
 import lombok.Data;
 
+import java.io.Serializable;
+
 /**
  * @program: sc-f-chapter1
  * @description:
@@ -13,7 +15,8 @@ import lombok.Data;
  *   index:导入时使用
  **/
 @Data
-public class ArtCrowdVo {
+public class ArtCrowdVo implements Serializable {
+        private static final long serialVersionUID = 2382146454131368401L;
         // Index represents column index, starting from 0
         // Annotation free import is supported, i.e. it does not need to specify the column corresponding to the field @Excelcolumn, and will be imported in the default order of all fields
         // Can be read according to the specified title

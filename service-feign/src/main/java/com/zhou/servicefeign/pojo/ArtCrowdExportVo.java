@@ -4,6 +4,8 @@ import com.github.liaochong.myexcel.core.annotation.ExcelColumn;
 import com.github.liaochong.myexcel.core.annotation.ExcelModel;
 import lombok.Data;
 
+import java.io.Serializable;
+
 /**
  * @program: sc-f-chapter1
  * @description: 导出vo  设置样式
@@ -12,8 +14,9 @@ import lombok.Data;
  **/
 @Data
 @ExcelModel(sheetName = "海外国家数据")
-public class ArtCrowdExportVo {
+public class ArtCrowdExportVo implements Serializable {
 
+    private static final long serialVersionUID = 7593819372394482629L;
     /**
      * 全球合作伙伴 -> 数据名称  表头
      */
