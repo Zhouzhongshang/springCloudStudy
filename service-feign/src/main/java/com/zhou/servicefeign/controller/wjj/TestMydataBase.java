@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.sound.sampled.*;
+import java.io.File;
+import java.io.IOException;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -54,5 +57,38 @@ return testDbDao.queryAll(testDb);
         if (insert==1){
             throw new Exception("主动跑出异常");
         }
+    }
+
+    public static void main(String[] args) throws IOException {
+      //D:\CloudMusic\install\CloudMusic\cloudmusic.exe
+
+        Runtime.getRuntime().exec("\"D:\\CloudMusic\\install\\CloudMusic\\cloudmusic.exe\""
+                +"D:\\\\CloudMusic\\\\G.E.M.邓紫棋 - 孤独.mp3");
+
+//        AudioInputStream as;
+//        try {
+//            //音频文件在项目根目录的img文件夹下
+//            as = AudioSystem.getAudioInputStream(new File("D:\\CloudMusic\\G.E.M.邓紫棋 - 孤独.mp3"));
+//            AudioFormat format = as.getFormat();
+//            SourceDataLine sdl = null;
+//            DataLine.Info info = new DataLine.Info(SourceDataLine.class, format);
+//            sdl = (SourceDataLine) AudioSystem.getLine(info);
+//            sdl.open(format);
+//            sdl.start();
+//            int nBytesRead = 0;
+//            byte[] abData = new byte[512];
+//            while (nBytesRead != -1) {
+//                nBytesRead = as.read(abData, 0, abData.length);
+//                if (nBytesRead >= 0) {
+//                    sdl.write(abData, 0, nBytesRead);
+//                }
+//            }
+//            //关闭SourceDataLine
+//            sdl.drain();
+//            sdl.close();
+//        }catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
+//            // TODO Auto-generated catch block
+//            e.printStackTrace();
+//        }
     }
 }

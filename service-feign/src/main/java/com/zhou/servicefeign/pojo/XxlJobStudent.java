@@ -53,4 +53,10 @@ public class XxlJobStudent implements Supplier<XxlJobStudent> {
     public XxlJobStudent get() {
         return null;
     }
+
+
+    public static void main(String[] args) {
+
+
+    }
 }
