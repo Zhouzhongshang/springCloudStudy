@@ -1,6 +1,10 @@
 package com.zhou.servicefeign.controller.zzs;
 
-import java.util.concurrent.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.LinkedBlockingQueue;
 
 /**
  * @program: sc-f-chapter1
@@ -17,6 +21,9 @@ public class ProducerAndConsumer {
 
         Thread pr = new Thread(new Producer(tasks));
         Thread co = new Thread(new Consumer(tasks));
+
+        ArrayList<Object> objects = new ArrayList<>();
+        Map map= new HashMap<>();
 
         pr.start();
         co.start();
