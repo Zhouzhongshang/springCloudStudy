@@ -1,4 +1,4 @@
-package com.zhou.servicefeign.controller.zzs;
+package com.zhou.servicefeign.controller.zzs.thread;
 
 import java.util.ArrayList;
 import java.util.HashMap;

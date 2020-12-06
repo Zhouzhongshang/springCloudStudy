@@ -1,4 +1,4 @@
-package com.zhou.servicefeign.controller.zzs;
+package com.zhou.servicefeign.controller.zzs.single;
 
 /**
  * @program: sc-f-chapter1
