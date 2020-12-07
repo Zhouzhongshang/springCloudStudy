@@ -31,9 +31,12 @@ import java.util.concurrent.locks.ReentrantLock;
  * Lock 【可见性 原子性 有序性】
  * ReentrantLock
  * ReadWriteLock read共享大家可以一起读、write必须是一个事务
- * volatile保证多线程之间的变量共享 【可见性 有序性】+ CAS【ABA问题：递增版本解决】 就可以保证线程安全了
+ * volatile保证多线程之间的变量共享 【可见性 有序性】+ CAS【ABA问题：递增版本解决】 结合ActomicInteger
+ *                                                                                  就可以保证线程安全了
  *         读操作很快 写操作稍慢会插入很多内存屏障来禁止重排序
  *         synchronized可以保证变量的 【可见性 原子性 有序性】
+ *
+ * Lock.lock lock.newCondition队列
  *
  **/
 public class ReentrantLockDesign {
