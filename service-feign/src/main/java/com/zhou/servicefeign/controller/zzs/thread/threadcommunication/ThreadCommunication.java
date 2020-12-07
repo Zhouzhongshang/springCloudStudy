@@ -1,4 +1,4 @@
-package com.zhou.servicefeign.controller.zzs.thread.communication;
+package com.zhou.servicefeign.controller.zzs.thread.threadcommunication;
 
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;

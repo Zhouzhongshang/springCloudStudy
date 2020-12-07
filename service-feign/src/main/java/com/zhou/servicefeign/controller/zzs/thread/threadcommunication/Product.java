@@ -1,4 +1,4 @@
-package com.zhou.servicefeign.controller.zzs.thread.communication;
+package com.zhou.servicefeign.controller.zzs.thread.threadcommunication;
 
 /**
  * @program: sc-f-chapter1
