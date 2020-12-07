@@ -16,6 +16,8 @@ import java.util.concurrent.locks.ReentrantLock;
  * 4.0 yield,让步不是进入阻塞状态，而是进入就绪状态，不需要时间无异常
  * 5.0 中断、以及后台线程的设置
  *
+ * synchronized[方法，对象->同步监视器]
+ *
  * ======================================结合线程的生命周期理解=====================================================
  *
  * Obj.wait()与Obj.notify()必须要与synchronized(Obj)一起使用
@@ -23,6 +25,16 @@ import java.util.concurrent.locks.ReentrantLock;
  * 2.0，notify()是对象锁的唤醒操作。
  * 3.sleep()方法是使当前线程让出cpu,进入到阻塞状态，时间到，唤醒，进入线程进入就绪状态等待队列。
  * 顺序上：先通知、后wait
+ *
+ *
+ * ================================AQS==========================================
+ * Lock 【可见性 原子性 有序性】
+ * ReentrantLock
+ * ReadWriteLock read共享大家可以一起读、write必须是一个事务
+ * volatile保证多线程之间的变量共享 【可见性 有序性】+ CAS【ABA问题：递增版本解决】 就可以保证线程安全了
+ *         读操作很快 写操作稍慢会插入很多内存屏障来禁止重排序
+ *         synchronized可以保证变量的 【可见性 原子性 有序性】
+ *
  **/
 public class ReentrantLockDesign {
     //总共100个苹果，A每次拿3个 B每次拿5个 当不够拿时停止，输出最后的苹果数量
