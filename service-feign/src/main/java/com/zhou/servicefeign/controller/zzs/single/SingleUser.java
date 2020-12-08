@@ -9,7 +9,6 @@ package com.zhou.servicefeign.controller.zzs.single;
 public class SingleUser {
 
     private SingleUser(){
-
     }
 
     static enum UserEnum {
