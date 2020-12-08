@@ -1,5 +1,8 @@
 package com.zhou.servicefeign.controller.zzs.thread;
 
+import lombok.SneakyThrows;
+
+import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
@@ -40,15 +43,26 @@ import java.util.concurrent.locks.ReentrantLock;
  *
  **/
 public class ReentrantLockDesign {
-    //总共100个苹果，A每次拿3个 B每次拿5个 当不够拿时停止，输出最后的苹果数量
-    //设计有问题
+
+    /**
+     * 1.不保证顺序执行  需要放大到1000 多执行几次
+     * 2.保证顺序执行   需要使用producerCondition consumerCondition 来调用signal await  同notify和wait方法
+     * 3.可以考虑优化
+     */
 
     static int apple = 100;
 
+    static  ReentrantLock reentrantLock = new ReentrantLock();
+
+    static Condition aCondition = reentrantLock.newCondition();
+    static Condition bCondition = reentrantLock.newCondition();
+
+
     public static void main(String[] args) {
 
-        PickThreeAppleMonkey pickThreeAppleMonkey = new PickThreeAppleMonkey();
-        PickFiveAppleMonkey pickFiveAppleMonkey = new PickFiveAppleMonkey();
+
+        PickThreeAppleMonkey pickThreeAppleMonkey = new PickThreeAppleMonkey(reentrantLock,aCondition,bCondition);
+        PickFiveAppleMonkey pickFiveAppleMonkey = new PickFiveAppleMonkey(reentrantLock,aCondition,bCondition);
 
         new Thread(pickThreeAppleMonkey,"thread1").start();
         new Thread(pickFiveAppleMonkey,"thread2").start();
@@ -57,8 +71,24 @@ public class ReentrantLockDesign {
 
     static class PickThreeAppleMonkey implements Runnable{
 
-        private ReentrantLock lock = new ReentrantLock();
+        private ReentrantLock lock;
+        private Condition aCondition;
 
+        private Condition bCondition;
+
+
+        public PickThreeAppleMonkey(ReentrantLock lock) {
+            this.lock = lock;
+        }
+
+
+        public PickThreeAppleMonkey(ReentrantLock lock, Condition aCondition, Condition bCondition) {
+            this.lock = lock;
+            this.aCondition = aCondition;
+            this.bCondition = bCondition;
+        }
+
+        @SneakyThrows
         @Override
         public void run() {
             // ...
@@ -66,15 +96,17 @@ public class ReentrantLockDesign {
             while (true){
                 lock.lock();
                 try {
-                        if (apple < 3){
+                    if (apple < 3){
                             System.out.println(Thread.currentThread().getName() + " " +"A已经拿完了");
+                        aCondition.signal();
+                        bCondition.await();
                             break;
-                        }
+                    }
                     System.out.println(Thread.currentThread().getName() + "数量剩余："+ (apple = apple - 3) + "次数："+ (++count));
-                        Thread.sleep(100);
 
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
+                    bCondition.signal();
+                    aCondition.await();
+
                 } finally {
                     lock.unlock();
                 }
@@ -84,7 +116,21 @@ public class ReentrantLockDesign {
 
     static class PickFiveAppleMonkey implements Runnable{
 
-        private ReentrantLock lock = new ReentrantLock();
+        private ReentrantLock lock ;
+
+        private Condition aCondition;
+
+        private Condition bCondition;
+
+        public PickFiveAppleMonkey(ReentrantLock lock) {
+            this.lock = lock;
+        }
+
+        public PickFiveAppleMonkey(ReentrantLock lock, Condition aCondition, Condition bCondition) {
+            this.lock = lock;
+            this.aCondition = aCondition;
+            this.bCondition = bCondition;
+        }
 
         @Override
         public void run() {
@@ -96,10 +142,15 @@ public class ReentrantLockDesign {
                 try {
                         if (apple < 5){
                             System.out.println(Thread.currentThread().getName() + " " +"B已经拿完了");
+                            aCondition.signal();
+                            bCondition.await();
                             break;
                         }
                         System.out.println(Thread.currentThread().getName() + "数量剩余："+ (apple = apple - 5) +"次数："+ (++count));
-                        Thread.sleep(100);
+
+                        aCondition.signal();
+                        bCondition.await();
+
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 } finally {
