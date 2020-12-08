@@ -52,6 +52,7 @@ public class ReentrantLockDesign {
 
     static int apple = 100;
 
+    //特别注意共享资源和锁都是同一个，否则就会失效。
     static  ReentrantLock reentrantLock = new ReentrantLock();
 
     static Condition aCondition = reentrantLock.newCondition();
