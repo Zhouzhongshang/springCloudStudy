@@ -1,5 +1,6 @@
 package com.zhou.servicefeign.controller.zzs.thread;
 
+import java.util.concurrent.Semaphore;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
 import java.util.stream.Stream;
@@ -34,14 +35,26 @@ public class SortAlternatePrinting {
         FooBar fooBar = new FooBar();
 
 
-        //注意：bar不能放在前面运行，因为循环的时候第一次循环不会打印bar,所以
+        //注意使用ReentrantLock：bar不能放在前面运行，因为循环的时候第一次循环不会打印bar,所以
         //i=0时候是失效的一次
+
+        //信号量最简单
+
         new Thread(()->{
-            fooBar.bar();
+            try {
+                fooBar.bar1();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }).start();
         new Thread(()->{
-            fooBar.foo();
+            try {
+                fooBar.foo1();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }).start();
+
 
     }
 
@@ -56,6 +69,31 @@ public class SortAlternatePrinting {
         private int n =100;
 
         private volatile Boolean flag = true;
+
+        private Semaphore fooSemaphore = new Semaphore(1);
+        private Semaphore barSemaphore = new Semaphore(0);
+
+
+        public void foo1() throws InterruptedException {
+            for (int i = 0; i <n ; i++) {
+                //获取一个许可
+                fooSemaphore.acquire();
+                //执行
+                System.out.println("foo");
+                //释放一个许可
+                barSemaphore.release();
+            }
+        }
+
+        public void bar1() throws InterruptedException {
+            for (int i = 0; i <n ; i++) {
+                //获取一个许可
+                barSemaphore.acquire();
+                System.out.println("bar");
+                //释放一个许可
+                fooSemaphore.release();
+            }
+        }
 
         public void foo() {
           for (int i = 0; i < n; i++) {
