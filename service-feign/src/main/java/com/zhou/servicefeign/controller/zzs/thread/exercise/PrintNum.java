@@ -1,6 +1,4 @@
-package com.zhou.servicefeign.controller.zzs.thread;
-
-import lombok.SneakyThrows;
+package com.zhou.servicefeign.controller.zzs.thread.exercise;
 
 /**
  * @program: sc-f-chapter1
