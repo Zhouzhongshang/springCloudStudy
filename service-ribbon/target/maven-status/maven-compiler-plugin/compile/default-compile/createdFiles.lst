@@ -1,0 +1,5 @@
+com\zhou\serviceribbon\mapper\WbsMapper.class
+com\zhou\serviceribbon\mapper\BaseMapper.class
+com\zhou\serviceribbon\service\HelloService.class
+com\zhou\serviceribbon\ServiceRibbonApplication.class
+com\zhou\serviceribbon\controller\HelloController.class

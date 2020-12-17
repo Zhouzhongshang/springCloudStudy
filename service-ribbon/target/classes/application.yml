@@ -1,0 +1,21 @@
+# ����eureka�ͻ���Ҳ�� ribbon
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+server:
+  port: 8764
+spring:
+  application:
+    name: service-ribbon
+  datasource:
+      driver-class-name: com.mysql.jdbc.Driver
+
+      url: jdbc:mysql://localhost:3306/zhouzhongshan?useUnicode=true&characterEncoding=utf-8
+
+      username: root
+
+      password: root
+
+      type: com.alibaba.druid.pool.DruidDataSource
+

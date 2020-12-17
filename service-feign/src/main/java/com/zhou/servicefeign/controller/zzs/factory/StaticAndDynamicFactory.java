@@ -26,9 +26,6 @@ public class StaticAndDynamicFactory {
      */
 
     private static Integer integer;
-
-        private Integer integer1;
-
         //静态工厂
         public static Integer getInstance(){
             if (null == integer){
@@ -37,7 +34,7 @@ public class StaticAndDynamicFactory {
             return integer;
         }
 
-
+    private Integer integer1;
         //动态工厂
         public Integer getInteger1(){
             if (integer1== null){

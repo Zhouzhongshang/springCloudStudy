@@ -1,0 +1,45 @@
+feign:
+  hystrix:
+    enabled: true
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+server:
+  port: 8765
+spring:
+    datasource:
+        driver-class-name: com.mysql.jdbc.Driver
+        url: jdbc:mysql://localhost:3306/mydatabase?useUnicode=true&characterEncoding=utf-8
+        username: root
+        password: root
+        type: com.alibaba.druid.pool.DruidDataSource
+    application:
+        name: service-feign
+
+# 调度中心的地址和执行器的配置
+xxl:
+  job:
+    admin:
+      addresses: http://127.0.0.1:8079/xxl-job-admin
+    executor:
+      appname: xxl-job-executor-sample
+      ip:
+      port: 9998
+      logpath: /data/applogs/xxl-job/jobhandler
+      logretentiondays: 30
+    accessToken:
+
+
+      ### xxl-job admin address list, such as "http://address" or "http://address01,http://address02"
+#xxl:job:admin:addresses:http://127.0.0.1:8079/xxl-job-admin
+
+      ### xxl-job executor address
+#xxl.job.executor.appname=xxl-job-executor-sample
+#xxl.job.executor.ip=
+#xxl.job.executor.port=9999
+
+#password for githup
+#zzs1994124748249
+
