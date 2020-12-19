@@ -12,7 +12,7 @@ import java.util.concurrent.LinkedBlockingQueue;
  * @author: zzs
  * @create: 2020-11-30 21:37
  **/
-public class ProducerAndConsumer {
+public class ProducerAndConsumerBlockingQueue {
     public static void main(String[] args) {
 
         LinkedBlockingQueue<Integer> tasks = new LinkedBlockingQueue<>(5);
