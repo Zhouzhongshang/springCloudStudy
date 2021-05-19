@@ -14,7 +14,7 @@ import java.util.concurrent.locks.ReentrantLock;
  * 1.0，Callable接口，FutureTask可以获取结果，和抛出异常，知道获取结果
  *
  * 生命周期
- * 2.0 join,先让start(),再join是执行完，再让其它的执行
+ * 2.0 join,先start(),再join是执行完，再让其它的执行
  * 3.0 sleep,自己处于阻塞状态，当醒过来时，进入等待队列，等到拿到cpu就可以执行了。
  * 4.0 yield,让步不是进入阻塞状态，而是进入就绪状态，不需要时间无异常
  * 5.0 中断、以及后台线程的设置

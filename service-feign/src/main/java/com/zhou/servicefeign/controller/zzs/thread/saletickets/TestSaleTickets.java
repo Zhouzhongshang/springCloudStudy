@@ -20,6 +20,11 @@ public class TestSaleTickets {
 
     public static void main(String[] args) {
 
+        //线程安全的 -做string的代替处理
+        StringBuffer stringBuffer = new StringBuffer();
+        //线程不安全
+        StringBuilder stringBuilder = new StringBuilder();
+
         for (int i = 0; i <10 ; i++) {
             new Thread(()->{
                 //获取锁

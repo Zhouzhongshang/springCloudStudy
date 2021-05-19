@@ -8,6 +8,8 @@ package com.zhou.servicefeign.controller.zzs.objectorder;
  **/
 public class Root {
 
+    static Integer a = 1;
+
    public int anInt;
 
     public Root(int anInt) {
