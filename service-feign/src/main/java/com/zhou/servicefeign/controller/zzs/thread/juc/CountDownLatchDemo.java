@@ -10,7 +10,10 @@ import java.util.concurrent.Executors;
  * @author: zzs
  * @create: 2020-12-07 22:17
  *
- * ===================当所有的计数为0时，才结束
+ * CountDownLatch是程序递减计数
+ *  CountDown是计数递减的意思，Latch是门闩的意思。内部维持一个递减的计数器。可以理解为初始有n个Latch，等Latch数量递减到0的时候，就结束阻塞执行后续操作。
+ * countDown( )：减少Latch的计数，如果计数达到零，释放所有等待的线程。
+ * await()：导致当前线程等待，直到到Latch计数到零，或者被interrupt。
  **/
 public class CountDownLatchDemo {
     public static void main(String[] args) throws InterruptedException {

@@ -8,14 +8,14 @@ import java.util.concurrent.*;
  * @author: zzs
  * @create: 2020-12-07 22:22
  *
- * 可以重置的countdownlatch
+ * Barrier：屏障，会等待线程数目满足指定数量后，冲破屏障，同时执行，Cyclic：回环，冲破屏障后数量重置，开始下一轮线程的等待和冲破屏障。底层基于AQS。
+ * 重置功能
  **/
 public class CyclicBarrierDemo {
 
     public static void main(String[] args) {
       //  CountDownLatch countDownLatch = new CountDownLatch(2);
         CyclicBarrier cyclicBarrier = new CyclicBarrier(2);
-
         //创建线程池
         ExecutorService executorService = Executors.newFixedThreadPool(5);
         //提交任务
@@ -23,17 +23,13 @@ public class CyclicBarrierDemo {
             System.out.println("任务一====1====");
             try {
                 cyclicBarrier.await();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            } catch (BrokenBarrierException e) {
+            } catch (InterruptedException | BrokenBarrierException e) {
                 e.printStackTrace();
             }
             System.out.println("任务一====2====");
             try {
                 cyclicBarrier.await();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            } catch (BrokenBarrierException e) {
+            } catch (InterruptedException | BrokenBarrierException e) {
                 e.printStackTrace();
             }
             System.out.println("任务一====3====");
@@ -44,17 +40,13 @@ public class CyclicBarrierDemo {
             System.out.println("任务二====1====");
             try {
                 cyclicBarrier.await();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            } catch (BrokenBarrierException e) {
+            } catch (InterruptedException | BrokenBarrierException e) {
                 e.printStackTrace();
             }
             System.out.println("任务二====2====");
             try {
                 cyclicBarrier.await();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            } catch (BrokenBarrierException e) {
+            } catch (InterruptedException | BrokenBarrierException e) {
                 e.printStackTrace();
             }
             System.out.println("任务二====3====");
